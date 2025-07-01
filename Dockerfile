@@ -27,6 +27,7 @@ RUN composer install --no-dev --optimize-autoloader
 # Verify Composer installation
 RUN composer --version
 
+RUN chmod +x /var/www/html/backuper.sh
 RUN chmod +x /var/www/html/backuper-container.sh
 
 # Set default command
