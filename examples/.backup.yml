@@ -1,0 +1,40 @@
+# Your project name
+my-project:
+
+    # Optional section
+    # File ".env" will be automatically parsed and included. 
+    # You can input env file(s) with non-default names and paths
+    env_file: 
+        - .env
+
+    # Backup directories and files
+    storages:
+        - public_html/index.php
+        - app
+
+        # if you wand to change destination path in archive, use object with keys path and dest:
+        - path: vendor/
+          dest: 3rd-party/
+
+    # Backup databases
+    # Env variables supported
+    # Required fields: host, user, pass, name.
+    databases:
+        - type: mysql       
+          host: localhost
+          user: ${DB_USER}
+          pass: ${DB_PASS}
+          name: db_name
+          tables: {} 
+          charser: 'utf-8' 
+
+
+    # Destination for saving backups
+    # Storage values: local (default) and yandex (for uploading to yandex.disk)
+    # Filename is optional key
+    # Auth key using only for login at remote services
+    backup:
+        storage: yandex
+        path: /backup
+        filename: my-super-project-%Y-%m-%d--%H-%i-%s.zip
+        auth: {token: "${YD_TOKEN}"}
