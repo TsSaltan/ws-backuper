@@ -7,10 +7,8 @@ WORKDIR /var/www/html
 # Install required PHP extensions and dependencies
 RUN apk add --no-cache \
     curl \
-    unzip \
     libzip-dev \
     git \
-    mysql-client \
     && docker-php-ext-install \
     zip \
     pdo_mysql
