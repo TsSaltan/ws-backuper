@@ -125,7 +125,8 @@ class Backuper {
                             $tables = (isset($db->tables) && is_array($db->tables)) ? $db->tables : [];
                             $type = isset($db->type) ? $db->type : 'mysql';
                             $charset = isset($db->charset) ? $db->charset : 'utf8';
-                            $backup->addDatabase($db->host, $db->name, $db->user, $db->pass, $tables, $type, $charset);
+                            $port = isset($db->port) ? $db->port : 3306;
+                            $backup->addDatabase($db->host, $db->name, $db->user, $db->pass, $tables, $type, $charset, $port);
                         }
                     }
                 }

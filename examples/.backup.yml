@@ -24,6 +24,7 @@ my-project:
           host: localhost
           user: ${DB_USER}
           pass: ${DB_PASS}
+          port: ${DB_PORT}
           name: db_name
           tables: {} 
           charser: 'utf-8' 
