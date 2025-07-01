@@ -1,5 +1,5 @@
 <?php
-include 'vendor/autoload.php';
+include __DIR__ . '/../vendor/autoload.php';
 use Dallgoot\Yaml\Yaml;
 
 class Backuper {
@@ -14,9 +14,11 @@ class Backuper {
         $this->startTimeMs = microtime(true);
         $yamlFile = $this->getPath($this->configFile);
         if(!file_exists($yamlFile)) {
-            throw new \Exception("Configuration file not found: " . $yamlFile);
+            $this->log("Configuration file not found: " . $yamlFile, 'error');
+            return false;
         }
         $this->yaml = Yaml::parseFile($yamlFile);
+        $this->run();
     }
 
     protected function getPath(string $path): string {
@@ -171,4 +173,4 @@ class Backuper {
 }
 
 set_time_limit(0);
-(new Backuper(getcwd()))->run();
+(new Backuper(getcwd()));
