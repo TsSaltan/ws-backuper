@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Base directory containing the backups
-BASE_DIR="/var/backups"
+BASE_DIR="/backup"
 CURRENT_DIR="$(dirname "$(realpath "$0")")"
 
 # Check if the base directory exists
@@ -17,6 +17,6 @@ for dir in "$BASE_DIR"/*; do
         cd "$dir" || { echo "Failed to change directory to $dir"; continue; }
         
         echo "Running backup script in $dir..."
-        sh -c "$CURRENT_DIR/backup.sh"
+        sh -c "$CURRENT_DIR/backuper.sh"
     fi
 done
