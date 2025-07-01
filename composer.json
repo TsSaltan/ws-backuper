@@ -1,0 +1,26 @@
+{
+    "name": "tssaltan/ws-backuper",
+    "description": "Make backups of your web-projects",
+    "type": "project",
+    "authors": [
+        {
+            "name": "tssaltan",
+            "email": "i@tssaltan.top"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "dallgoot/yaml": "dev-master",
+        "tssaltan/php-server-backup": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/tssaltan/php-server-backup"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/dallgoot/yaml"
+        }
+    ]
+}
