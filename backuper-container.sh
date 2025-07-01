@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Base directory containing the backups
 BASE_DIR="/var/backups"
