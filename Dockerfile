@@ -27,5 +27,7 @@ RUN composer install --no-dev --optimize-autoloader
 # Verify Composer installation
 RUN composer --version
 
+RUN chmod +x /var/www/html/backuper-container.sh
+
 # Set default command
-CMD ["sh", "-c", "/var/www/html/backup-container.sh"]
+ENTRYPOINT  ["sh", "-c", "/var/www/html/backuper-container.sh"]
