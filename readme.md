@@ -31,7 +31,7 @@ Put your preferred schedule
 ```yaml
     backuper:
         container_name: backuper
-        restart: no
+        restart: never
         image: tssaltan/ws-backuper:latest
         volumes:
             -  ./projects/my_project1:/backup/my_project1:Z
