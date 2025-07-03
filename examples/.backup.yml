@@ -31,11 +31,13 @@ my-project:
 
 
     # Destination for saving backups
-    # Storage values: local (default) and yandex (for uploading to yandex.disk)
+    # Storage values:   local (default), 
+    #                   yandex (for uploading to yandex.disk)
+    #                   dropbox
     # Filename is optional key
     # Auth key using only for login at remote services
     backup:
         storage: yandex
         path: /backup
         filename: my-super-project-%Y-%m-%d--%H-%i-%s.zip
-        auth: {token: "${YD_TOKEN}"}
+        auth: {token: "${TOKEN}"}

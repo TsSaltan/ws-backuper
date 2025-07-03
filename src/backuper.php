@@ -154,6 +154,13 @@ class Backuper {
                     $token = $auth['token'] ?? '';
                     $backup->uploadYandexDisk($token, $path, true);
                     break;
+
+                case 'dropbox':
+                    $tmpFile = sys_get_temp_dir() . '/' . $filename;
+                    $backup->createBackup($tmpFile);
+                    $token = $auth['token'] ?? '';
+                    $backup->uploadDropbox($token, $path, true);
+                    break;
                 
                 case 'local':
                 default:
