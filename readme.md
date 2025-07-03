@@ -4,6 +4,7 @@ Backup configs should be stored into YAML file (*.backup.yml*) and environment (
 
 Supported remotes:
 - Yandex.Disk ([how to get access-token](https://github.com/tssaltan/php-server-backup?tab=readme-ov-file#yandexdisk))
+- Dropbox ([how to get access-token](https://github.com/tssaltan/php-server-backup?tab=readme-ov-file#dropbox))
 
 ## Backup your project using *script*
 1. Put configuration backup file *.backup.yml* (and *.env* is necessary) to your project directory
