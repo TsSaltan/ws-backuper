@@ -19,7 +19,8 @@ for dir in "$BASE_DIR"/*; do
         echo "Running backup script in $dir..."
 
         # Call bash script async
-        sh -c "$CURRENT_DIR/backuper.sh" & 
-        
+        sh -c "$CURRENT_DIR/backuper.sh" &         
     fi
 done
+
+wait
