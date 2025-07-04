@@ -140,12 +140,14 @@ class Backuper {
             $storage = 'local';
             $auth = [];
             $path = $this->dir;
+            $attempts = 3;
 
             if(isset($item->backup) && is_object($item->backup)){
                 $filename = isset($item->backup->filename) ? $item->backup->filename : $filename;
                 $storage = isset($item->backup->storage) ? $item->backup->storage : $storage;
                 $auth = isset($item->backup->auth) ? $item->backup->auth : $auth;
                 $path = isset($item->backup->path) ? $this->getPath($item->backup->path) : $path;
+                $path = isset($item->backup->attempts) ? $this->getPath($item->backup->attempts) : $attempts;
             }
 
             $path = rtrim($path, '/|\\') . '/';
@@ -156,14 +158,25 @@ class Backuper {
                     $tmpFile = sys_get_temp_dir() . '/' . $filename;
                     $backup->createBackup($tmpFile);
                     $token = $auth['token'] ?? '';
-                    $backup->uploadYandexDisk($token, $path, true);
+                    for($a = 0; $a < $attempts; $a++) {
+                        if($backup->uploadYandexDisk($token, $path, true)) {
+                            break;
+                        }
+                        $this->log("Attempt " . ($a + 1) . " failed. Retrying...", 'warning');
+                    }
+           
                     break;
 
                 case 'dropbox':
                     $tmpFile = sys_get_temp_dir() . '/' . $filename;
                     $backup->createBackup($tmpFile);
                     $token = $auth['token'] ?? '';
-                    $backup->uploadDropbox($token, $path, true);
+                    for($a = 0; $a < $attempts; $a++) {
+                        if($backup->uploadDropbox($token, $path, true)) {
+                            break;
+                        }
+                        $this->log("Attempt " . ($a + 1) . " failed. Retrying...", 'warning');
+                    }
                     break;
                 
                 case 'local':

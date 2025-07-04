@@ -36,8 +36,10 @@ my-project:
     #                   dropbox
     # Filename is optional key
     # Auth key using only for login at remote services
+    # You can set number of attempts for uploading files to API server (if something wrong on uploading file to remote server)
     backup:
         storage: yandex
         path: /backup
         filename: my-super-project-%Y-%m-%d--%H-%i-%s.zip
         auth: {token: "${TOKEN}"}
+        attempts: 3
