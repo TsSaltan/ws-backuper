@@ -147,7 +147,7 @@ class Backuper {
                 $storage = isset($item->backup->storage) ? $item->backup->storage : $storage;
                 $auth = isset($item->backup->auth) ? $item->backup->auth : $auth;
                 $path = isset($item->backup->path) ? $this->getPath($item->backup->path) : $path;
-                $path = isset($item->backup->attempts) ? $this->getPath($item->backup->attempts) : $attempts;
+                $attempts = isset($item->backup->attempts) ? $this->getPath($item->backup->attempts) : $attempts;
             }
 
             $path = rtrim($path, '/|\\') . '/';
