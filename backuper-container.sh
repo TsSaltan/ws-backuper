@@ -17,6 +17,9 @@ for dir in "$BASE_DIR"/*; do
         cd "$dir" || { echo "Failed to change directory to $dir"; continue; }
         
         echo "Running backup script in $dir..."
-        sh -c "$CURRENT_DIR/backuper.sh"
+
+        # Call bash script async
+        sh -c "$CURRENT_DIR/backuper.sh" & 
+        
     fi
 done
