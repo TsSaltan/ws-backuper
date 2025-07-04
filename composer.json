@@ -11,7 +11,7 @@
     "minimum-stability": "dev",
     "require": {
         "dallgoot/yaml": "dev-master",
-        "tssaltan/php-server-backup": "dev-master"
+        "tssaltan/php-server-backup": "dev-dev"
     },
     "repositories": [
         {
