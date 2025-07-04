@@ -3,6 +3,7 @@ include __DIR__ . '/../vendor/autoload.php';
 use Dallgoot\Yaml\Yaml;
 
 class Backuper {
+    protected $projectName;
     protected $yaml;
     protected $dir;
     protected $configFile;
@@ -12,6 +13,7 @@ class Backuper {
         $this->dir = realpath($dir ?? __DIR__) . DIRECTORY_SEPARATOR;
         $this->configFile = $configFile;
         $this->startTimeMs = microtime(true);
+        $this->projectName = basename(dirname($this->configFile));
         $yamlFile = $this->getPath($this->configFile);
         if(!file_exists($yamlFile)) {
             $this->log("Configuration file not found: " . $yamlFile, 'error');
@@ -37,6 +39,7 @@ class Backuper {
     }
 
     protected function log(string $message, ?string $type = null) {
+        echo '[' . $this->projectName . '] ';
         echo date('[Y-m-d H:i:s] ');
         echo '[' . sprintf('%09f', (microtime(true) - $this->startTimeMs)) . 's] ';
         
@@ -99,6 +102,7 @@ class Backuper {
         $keys = get_object_vars($this->yaml);
 
         foreach($keys as $projectName => $item){
+            $this->projectName = $projectName;
             $backup = $this->getBackupHandler();
             $item = $this->parseEnv($item);
 
