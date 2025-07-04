@@ -17,7 +17,7 @@ RUN apk add --no-cache \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Clone the PHP script from your GitHub repository
-RUN git clone https://github.com/tssaltan/ws-backuper/ .
+RUN git clone --branch dev https://github.com/tssaltan/ws-backuper/ .
 
 # Update Composer dependencies
 RUN composer install --no-dev --optimize-autoloader
